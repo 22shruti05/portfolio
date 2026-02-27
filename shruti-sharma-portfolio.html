@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shruti Sharma — Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0D1B2A;
+  --navy2: #1A3C5E;
+  --amber: #F5A623;
+  --amber-light: #FFD080;
+  --green: #1E5C3A;
+  --cream: #FDFBF7;
+  --warm: #F0EBE3;
+  --text: #1A1A1A;
+  --muted: #6E6860;
+  --white: #ffffff;
+  --glass: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  padding: 22px 70px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all 0.4s;
+}
+nav.scrolled {
+  background: rgba(13,27,42,0.95);
+  backdrop-filter: blur(16px);
+  padding: 16px 70px;
+  box-shadow: 0 1px 40px rgba(0,0,0,0.3);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  color: white; font-size: 1.5rem; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.5px;
+}
+.nav-links { display: flex; gap: 36px; }
+.nav-links a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none; font-size: 13px;
+  font-weight: 400; letter-spacing: 1px;
+  text-transform: uppercase; transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: var(--amber);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: white; }
+.nav-links a:hover::after { width: 100%; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: grid;
+  grid-template-columns: 55% 45%;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(245,166,35,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(30,92,58,0.15) 0%, transparent 60%);
+  animation: meshShift 12s ease-in-out infinite alternate;
+}
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+@keyframes meshShift {
+  from { opacity: 0.8; transform: scale(1); }
+  to   { opacity: 1; transform: scale(1.04); }
+}
+
+.hero-left {
+  padding: 130px 80px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(245,166,35,0.4);
+  background: rgba(245,166,35,0.1);
+  color: var(--amber-light);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 7px 16px; border-radius: 40px;
+  margin-bottom: 32px; width: fit-content;
+  animation: fadeUp 0.8s 0.1s both;
+}
+.hero-badge::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--amber); border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 6vw, 6.5rem);
+  font-weight: 700;
+  color: white; line-height: 0.95;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.25s both;
+}
+.hero-name span {
+  display: block;
+  background: linear-gradient(135deg, var(--amber-light), var(--amber));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-desc {
+  color: rgba(255,255,255,0.6);
+  font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+  max-width: 420px; margin-bottom: 48px;
+  animation: fadeUp 0.8s 0.4s both;
+}
+
+.hero-cta {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.55s both;
+}
+
+.btn {
+  padding: 13px 30px; border-radius: 6px;
+  font-size: 13px; font-weight: 500;
+  text-decoration: none; transition: all 0.3s;
+  letter-spacing: 0.5px; cursor: pointer; border: none;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--amber), #e8920a);
+  color: white;
+  box-shadow: 0 4px 20px rgba(245,166,35,0.35);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,166,35,0.5); }
+.btn-ghost {
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.85); background: transparent;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
+
+.hero-right {
+  display: flex; align-items: center; justify-content: center;
+  padding: 120px 60px 80px 20px;
+  position: relative; z-index: 2;
+}
+
+.stat-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; width: 100%; max-width: 380px;
+}
+
+.stat-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  border-radius: 16px; padding: 28px 24px;
+  text-align: center;
+  transition: transform 0.3s, background 0.3s;
+  animation: fadeUp 0.8s both;
+}
+.stat-card:nth-child(1) { animation-delay: 0.3s; }
+.stat-card:nth-child(2) { animation-delay: 0.45s; }
+.stat-card:nth-child(3) { animation-delay: 0.6s; }
+.stat-card:nth-child(4) { animation-delay: 0.75s; }
+.stat-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.13); }
+.stat-card.featured {
+  background: linear-gradient(135deg, rgba(245,166,35,0.25), rgba(245,166,35,0.1));
+  border-color: rgba(245,166,35,0.4);
+}
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; font-weight: 700;
+  color: white; line-height: 1; margin-bottom: 6px;
+}
+.stat-card.featured .stat-num { color: var(--amber-light); }
+.stat-lbl { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; line-height: 1.4; }
+
+.scroll-hint {
+  position: absolute; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: rgba(255,255,255,0.25); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; z-index: 2;
+  animation: fadeUp 1s 1s both;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+  animation: scrollDrop 2s ease-in-out infinite;
+}
+@keyframes scrollDrop {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50%       { transform: scaleY(0.4); opacity: 0.3; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* SHARED */
+.section { padding: 110px 70px; }
+
+.label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.label::before {
+  content: ''; width: 24px; height: 2px;
+  background: var(--amber); display: block;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700; color: var(--navy);
+  line-height: 1.15; margin-bottom: 60px;
+}
+
+.reveal {
+  opacity: 0; transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* EXPERIENCE */
+.exp-section { background: white; }
+.exp-inner { max-width: 1100px; margin: 0 auto; }
+
+.exp-card {
+  display: grid; grid-template-columns: 240px 1fr;
+  gap: 60px; padding: 56px 0;
+  border-bottom: 1px solid #EDEBE8;
+}
+
+.exp-company {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 6px;
+}
+.exp-period {
+  font-size: 12px; font-weight: 600;
+  color: var(--amber); letter-spacing: 0.5px;
+  margin-bottom: 4px; text-transform: uppercase;
+}
+.exp-location { font-size: 13px; color: var(--muted); }
+.exp-badge {
+  display: inline-block;
+  background: var(--warm); color: var(--navy2);
+  font-size: 11px; font-weight: 500;
+  padding: 5px 12px; border-radius: 20px; margin-top: 16px;
+}
+
+.exp-role {
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--navy); margin-bottom: 24px;
+  padding-bottom: 20px; border-bottom: 1px solid #EDEBE8;
+}
+
+.exp-points { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.exp-points li {
+  display: flex; gap: 12px;
+  font-size: 0.93rem; color: #3D3D3D; line-height: 1.75;
+}
+.exp-points li::before {
+  content: '';
+  min-width: 6px; height: 6px;
+  background: var(--amber); border-radius: 50%;
+  margin-top: 9px; flex-shrink: 0;
+}
+
+/* SKILLS */
+.skills-section {
+  background: var(--navy);
+  position: relative; overflow: hidden;
+}
+.skills-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 80% at 90% 50%, rgba(245,166,35,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 0% 50%, rgba(30,92,58,0.1) 0%, transparent 60%);
+}
+.skills-section .label { color: var(--amber-light); }
+.skills-section .label::before { background: var(--amber-light); }
+.skills-section .section-title { color: white; }
+
+.skills-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto;
+}
+
+.skill-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; padding: 36px;
+  transition: transform 0.3s, background 0.3s, border-color 0.3s;
+}
+.skill-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(245,166,35,0.35);
+}
+.skill-icon { font-size: 1.8rem; margin-bottom: 16px; }
+.skill-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 700;
+  color: white; margin-bottom: 20px;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tag {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+  font-size: 12px; padding: 5px 13px;
+  border-radius: 20px; transition: all 0.2s;
+}
+.skill-tag:hover {
+  background: rgba(245,166,35,0.2);
+  border-color: rgba(245,166,35,0.4);
+  color: var(--amber-light);
+}
+
+/* WRITING */
+.writing-section { background: var(--warm); }
+.article-inner { max-width: 1100px; margin: 0 auto; }
+
+.article-card {
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 20px 70px rgba(0,0,0,0.1);
+  transition: box-shadow 0.4s, transform 0.4s;
+}
+.article-card:hover {
+  box-shadow: 0 30px 90px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+}
+
+.article-visual {
+  background: linear-gradient(150deg, var(--navy) 0%, #0e3250 40%, var(--green) 100%);
+  padding: 56px 50px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden; min-height: 400px;
+}
+.article-visual::before {
+  content: '';
+  position: absolute; bottom: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border: 60px solid rgba(245,166,35,0.12);
+  border-radius: 50%;
+}
+.article-visual::after {
+  content: '';
+  position: absolute; top: -40px; left: -40px;
+  width: 180px; height: 180px;
+  border: 40px solid rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+
+.article-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(245,166,35,0.2);
+  border: 1px solid rgba(245,166,35,0.4);
+  color: var(--amber-light);
+  font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; padding: 6px 14px;
+  border-radius: 40px; width: fit-content;
+  position: relative; z-index: 1;
+}
+.article-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.1rem; font-weight: 700;
+  color: white; line-height: 1.2;
+  position: relative; z-index: 1;
+}
+.article-sub {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.88rem; font-style: italic;
+  position: relative; z-index: 1;
+}
+
+.article-content {
+  background: white; padding: 52px 50px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.article-meta {
+  font-size: 12px; color: var(--muted);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+.article-meta span { display: inline-block; width: 3px; height: 3px; background: var(--muted); border-radius: 50%; }
+.article-body { font-size: 0.95rem; line-height: 1.8; color: #3D3D3D; }
+.article-body p { margin-bottom: 14px; }
+
+.article-quote {
+  border-left: 3px solid var(--amber);
+  padding: 14px 20px; margin: 20px 0;
+  background: rgba(245,166,35,0.05);
+  border-radius: 0 8px 8px 0;
+}
+.article-quote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-style: italic;
+  color: var(--navy2); line-height: 1.6; margin: 0;
+}
+
+.read-more {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--navy2); font-weight: 600;
+  font-size: 14px; text-decoration: none;
+  margin-top: 28px; transition: gap 0.2s, color 0.2s;
+  width: fit-content;
+  border-bottom: 2px solid var(--amber);
+  padding-bottom: 3px;
+}
+.read-more:hover { gap: 16px; color: var(--amber); }
+
+/* EDUCATION */
+.edu-section { background: white; padding: 80px 70px; }
+.edu-inner { max-width: 1100px; margin: 0 auto; }
+
+.edu-card {
+  display: flex; align-items: flex-start; gap: 28px;
+  background: var(--cream); border: 1px solid #E8E4DF;
+  border-radius: 16px; padding: 40px; max-width: 680px;
+  transition: box-shadow 0.3s;
+}
+.edu-card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.07); }
+.edu-icon {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--navy), var(--navy2));
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+.edu-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 700;
+  color: var(--navy); margin-bottom: 6px;
+}
+.edu-body p { font-size: 0.9rem; color: var(--muted); margin-bottom: 4px; }
+.edu-period {
+  font-size: 12px; font-weight: 600;
+  color: var(--amber); letter-spacing: 0.5px;
+  text-transform: uppercase; margin-top: 4px;
+}
+
+/* CONTACT */
+.contact-section {
+  background: var(--navy);
+  padding: 110px 70px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.contact-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(245,166,35,0.1) 0%, transparent 60%);
+}
+.contact-section .label { justify-content: center; color: var(--amber-light); margin-bottom: 16px; }
+.contact-section .label::before { background: var(--amber-light); }
+.contact-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700; color: white;
+  margin-bottom: 14px; position: relative; z-index: 1;
+}
+.contact-sub {
+  color: rgba(255,255,255,0.5); font-size: 1rem; font-weight: 300;
+  margin-bottom: 52px; position: relative; z-index: 1;
+}
+.contact-grid {
+  display: flex; justify-content: center;
+  gap: 16px; flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+.contact-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.8);
+  text-decoration: none; font-size: 14px;
+  transition: all 0.3s; backdrop-filter: blur(10px);
+}
+.contact-link:hover {
+  background: rgba(245,166,35,0.15);
+  border-color: rgba(245,166,35,0.4);
+  color: white; transform: translateY(-3px);
+}
+
+footer {
+  background: #070F18;
+  text-align: center; padding: 20px;
+  color: rgba(255,255,255,0.2); font-size: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 120px 28px 50px; }
+  .hero-right { padding: 20px 28px 80px; justify-content: flex-start; }
+  .stat-grid { max-width: 100%; }
+  .section { padding: 80px 28px; }
+  .exp-card { grid-template-columns: 1fr; gap: 20px; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .article-card { grid-template-columns: 1fr; }
+  .edu-section { padding: 70px 28px; }
+  .contact-section { padding: 80px 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Shruti Sharma</a>
+  <div class="nav-links">
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#writing">Writing</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-badge">Product Manager</div>
+    <h1 class="hero-name">Shruti<br><span>Sharma</span></h1>
+    <p class="hero-desc">I turn complex systems into products people trust — from IoT solar infrastructure to clean energy experiences that scale across India.</p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn btn-primary">View My Work ↓</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat-card featured">
+        <div class="stat-num">60K+</div>
+        <div class="stat-lbl">Platform Users</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">500+</div>
+        <div class="stat-lbl">MW Deployed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">30%</div>
+        <div class="stat-lbl">Revenue Growth</div>
+      </div>
+      <div class="stat-card featured">
+        <div class="stat-num">4</div>
+        <div class="stat-lbl">Apps Launched</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section exp-section" id="experience">
+  <div class="exp-inner">
+    <div class="label reveal">Work History</div>
+    <h2 class="section-title reveal">What I've Built</h2>
+    <div class="exp-card reveal">
+      <div class="exp-left">
+        <div class="exp-company">Jio Platforms</div>
+        <div class="exp-period">June 2023 – Present</div>
+        <div class="exp-location">Bangalore, India</div>
+        <div class="exp-badge">CleanTech · IoT</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Product Manager — SunGenie (Clean Energy IoT Platform)</div>
+        <ul class="exp-points">
+          <li><span></span>Owned end-to-end product vision for SunGenie, scaling real-time solar monitoring to 60K+ users across residential, commercial, and utility sectors — positioning it as a leading CleanTech IoT platform in India.</li>
+          <li><span></span>Launched 4 mobile apps (Android & iOS) on schedule with 3.5+ App Store ratings; led integration of 300+ solar inverters across 10+ enterprise clients.</li>
+          <li><span></span>Drove cross-functional execution with engineering, QA, UX, and ops using Agile/Scrum — improving sprint velocity by 12% and reducing operational complexity by 30%.</li>
+          <li><span></span>Implemented predictive maintenance and remote diagnostics, cutting site downtime by 20% and O&M costs by 18%, while maintaining 99% system uptime.</li>
+          <li><span></span>Used Amplitude and Productboard to guide feature prioritization — boosting adoption by 15% and contributing to 30% annual revenue growth.</li>
+          <li><span></span>Designed high-fidelity wireframes and prototypes in Figma, ensuring tight alignment between UX decisions and business KPIs across all product surfaces.</li>
+          <li><span></span>Delivered unified monitoring and metering dashboards for enterprise clients, resolving 200+ post-deployment issues and reducing operational complexity by 30%.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section skills-section" id="skills">
+  <div style="max-width:1100px; margin: 0 auto;">
+    <div class="label reveal">Capabilities</div>
+    <h2 class="section-title reveal">Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">🧭</div>
+        <h3>Product & Strategy</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Roadmapping</span>
+          <span class="skill-tag">Backlog Prioritization</span>
+          <span class="skill-tag">Sprint Planning</span>
+          <span class="skill-tag">KPI Tracking</span>
+          <span class="skill-tag">Go-to-Market Strategy</span>
+          <span class="skill-tag">A/B Testing</span>
+          <span class="skill-tag">User Research</span>
+          <span class="skill-tag">Competitive Analysis</span>
+          <span class="skill-tag">Feature Prioritization</span>
+          <span class="skill-tag">OKR Setting</span>
+          <span class="skill-tag">Product Discovery</span>
+          <span class="skill-tag">Customer Journey Mapping</span>
+          <span class="skill-tag">North Star Metric</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🛠</div>
+        <h3>Tools & Technology</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Azure DevOps</span>
+          <span class="skill-tag">JIRA</span>
+          <span class="skill-tag">Amplitude</span>
+          <span class="skill-tag">Productboard</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">MS Excel</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🤝</div>
+        <h3>Collaboration</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Cross-functional Leadership</span>
+          <span class="skill-tag">Stakeholder Communication</span>
+          <span class="skill-tag">User Story Definition</span>
+          <span class="skill-tag">Agile / Scrum</span>
+          <span class="skill-tag">Business–Product Alignment</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section class="section writing-section" id="writing">
+  <div class="article-inner">
+    <div class="label reveal">Thinking Out Loud</div>
+    <h2 class="section-title reveal">Featured Writing</h2>
+    <div class="article-card reveal">
+      <div class="article-visual">
+        <div class="article-tag">☀️ Product Thinking</div>
+        <div class="article-headline">From Solar Panels<br>to Coffee Breaks</div>
+        <div class="article-sub">What visibility does to how we think about infrastructure</div>
+      </div>
+      <div class="article-content">
+        <div>
+          <div class="article-meta">Feb 2026 <span></span> 3 min read <span></span> Medium</div>
+          <div class="article-body">
+            <p>Solar panels usually sit quietly in the background. When users can clearly see how much energy is being generated, when performance drops, and how the system behaves — something subtle happens.</p>
+            <div class="article-quote">
+              <p>"What users can see, they care about. Monitoring dashboards aren't really about charts or numbers — they're about confidence."</p>
+            </div>
+            <p>Once that confidence exists, people stop asking <em>"Is it working?"</em> and start asking <em>"What more can this system enable?"</em> — a solar garden, no walls, no gates, someone sitting inside with coffee knowing the whole space runs on solar. ☀️☕🌿</p>
+          </div>
+        </div>
+        <a href="https://medium.com/@22shruti05/from-solar-panels-to-coffee-breaks-solar-panels-usually-sit-quietly-in-the-background-9fa93e93cb5e" target="_blank" class="read-more">Read on Medium →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-section" id="education">
+  <div class="edu-inner">
+    <div class="label reveal">Background</div>
+    <h2 class="section-title reveal">Education</h2>
+    <div class="edu-card reveal">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-body">
+        <h3>B.Tech — Electronics & Communication Engineering</h3>
+        <p>Jaypee Institute of Information Technology, Noida, India</p>
+        <div class="edu-period">July 2019 – May 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="label">Let's Connect</div>
+  <h2 class="contact-title">Open to New Roles</h2>
+  <p class="contact-sub">Looking for Product Manager opportunities where technology creates real-world impact.</p>
+  <div class="contact-grid">
+    <a href="mailto:22shruti05@gmail.com" class="contact-link">✉️ 22shruti05@gmail.com</a>
+    <a href="tel:+917505250477" class="contact-link">📞 +91 75052 50477</a>
+    <a href="https://linkedin.com/in/shruti-sharma-b203401b9" target="_blank" class="contact-link">🔗 LinkedIn</a>
+    <a href="https://medium.com/@22shruti05" target="_blank" class="contact-link">✍️ Medium</a>
+  </div>
+</section>
+
+<footer>© 2026 Shruti Sharma · Built with purpose</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
