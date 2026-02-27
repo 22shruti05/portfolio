@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shruti Sharma — Product Manager</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy: #0D1B2A;
@@ -25,7 +25,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Lora', serif;
   background: var(--cream);
   color: var(--text);
   overflow-x: hidden;
@@ -45,16 +45,17 @@ nav.scrolled {
   box-shadow: 0 1px 40px rgba(0,0,0,0.3);
 }
 .nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  color: white; font-size: 1.5rem; font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  color: white; font-size: 1.5rem; font-weight: 700;
   text-decoration: none; letter-spacing: 0.5px;
 }
 .nav-links { display: flex; gap: 36px; }
 .nav-links a {
   color: rgba(255,255,255,0.6);
   text-decoration: none; font-size: 13px;
-  font-weight: 400; letter-spacing: 1px;
+  font-weight: 400; letter-spacing: 1.5px;
   text-transform: uppercase; transition: color 0.2s;
+  font-family: 'Lora', serif;
   position: relative;
 }
 .nav-links a::after {
@@ -72,7 +73,11 @@ nav.scrolled {
   display: grid;
   grid-template-columns: 55% 45%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+}
+.hero-bg {
+  position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  border-radius: 0;
 }
 .hero::before {
   content: '';
@@ -81,6 +86,7 @@ nav.scrolled {
     radial-gradient(ellipse 60% 60% at 80% 20%, rgba(245,166,35,0.12) 0%, transparent 60%),
     radial-gradient(ellipse 50% 50% at 10% 80%, rgba(30,92,58,0.15) 0%, transparent 60%);
   animation: meshShift 12s ease-in-out infinite alternate;
+  z-index: 0;
 }
 .hero::after {
   content: '';
@@ -89,6 +95,7 @@ nav.scrolled {
     linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
   background-size: 60px 60px;
+  z-index: 0;
 }
 @keyframes meshShift {
   from { opacity: 0.8; transform: scale(1); }
@@ -123,10 +130,11 @@ nav.scrolled {
 }
 
 .hero-name {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: clamp(3.5rem, 6vw, 6.5rem);
-  font-weight: 700;
+  font-weight: 900;
   color: white; line-height: 0.95;
+  letter-spacing: 4px;
   margin-bottom: 28px;
   animation: fadeUp 0.8s 0.25s both;
 }
@@ -170,8 +178,9 @@ nav.scrolled {
 
 .hero-right {
   display: flex; align-items: center; justify-content: center;
-  padding: 120px 60px 80px 20px;
+  padding: 100px 50px 80px 20px;
   position: relative; z-index: 2;
+  overflow: visible;
 }
 
 .stat-grid {
@@ -183,7 +192,7 @@ nav.scrolled {
   background: var(--glass);
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(20px);
-  border-radius: 16px; padding: 28px 24px;
+  border-radius: 16px; padding: 24px 20px;
   text-align: center;
   transition: transform 0.3s, background 0.3s;
   animation: fadeUp 0.8s both;
@@ -199,7 +208,7 @@ nav.scrolled {
 }
 
 .stat-num {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2.8rem; font-weight: 700;
   color: white; line-height: 1; margin-bottom: 6px;
 }
@@ -243,7 +252,7 @@ nav.scrolled {
 }
 
 .section-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 700; color: var(--navy);
   line-height: 1.15; margin-bottom: 60px;
@@ -266,7 +275,7 @@ nav.scrolled {
 }
 
 .exp-company {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.55rem; font-weight: 700;
   color: var(--navy); margin-bottom: 6px;
 }
@@ -336,7 +345,7 @@ nav.scrolled {
 }
 .skill-icon { font-size: 1.8rem; margin-bottom: 16px; }
 .skill-card h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.25rem; font-weight: 700;
   color: white; margin-bottom: 20px;
 }
@@ -401,7 +410,7 @@ nav.scrolled {
   position: relative; z-index: 1;
 }
 .article-headline {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2.1rem; font-weight: 700;
   color: white; line-height: 1.2;
   position: relative; z-index: 1;
@@ -432,7 +441,7 @@ nav.scrolled {
   border-radius: 0 8px 8px 0;
 }
 .article-quote p {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.1rem; font-style: italic;
   color: var(--navy2); line-height: 1.6; margin: 0;
 }
@@ -467,7 +476,7 @@ nav.scrolled {
   font-size: 1.4rem;
 }
 .edu-body h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.3rem; font-weight: 700;
   color: var(--navy); margin-bottom: 6px;
 }
@@ -492,7 +501,7 @@ nav.scrolled {
 .contact-section .label { justify-content: center; color: var(--amber-light); margin-bottom: 16px; }
 .contact-section .label::before { background: var(--amber-light); }
 .contact-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Playfair Display', serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700; color: white;
   margin-bottom: 14px; position: relative; z-index: 1;
@@ -563,8 +572,8 @@ footer {
 <section class="hero" id="home">
   <div class="hero-left">
     <div class="hero-badge">Product Manager</div>
-    <h1 class="hero-name">Shruti<br><span>Sharma</span></h1>
-    <p class="hero-desc">I turn complex systems into products people trust — from IoT solar infrastructure to clean energy experiences that scale across India.</p>
+    <h1 class="hero-name">SHRUTI<br><span>SHARMA</span></h1>
+    <p class="hero-desc">I turn messy problems into products people love — bridging users, teams, and technology to ship things that actually matter.</p>
     <div class="hero-cta">
       <a href="#experience" class="btn btn-primary">View My Work ↓</a>
       <a href="#contact" class="btn btn-ghost">Get in Touch</a>
@@ -618,6 +627,26 @@ footer {
           <li><span></span>Used Amplitude and Productboard to guide feature prioritization — boosting adoption by 15% and contributing to 30% annual revenue growth.</li>
           <li><span></span>Designed high-fidelity wireframes and prototypes in Figma, ensuring tight alignment between UX decisions and business KPIs across all product surfaces.</li>
           <li><span></span>Delivered unified monitoring and metering dashboards for enterprise clients, resolving 200+ post-deployment issues and reducing operational complexity by 30%.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-card reveal">
+      <div class="exp-left">
+        <div class="exp-company">Day-to-Day</div>
+        <div class="exp-period">Ongoing</div>
+        <div class="exp-location">Key Contributions</div>
+        <div class="exp-badge">Ownership · Quality · Collaboration</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Core Responsibilities & Impact</div>
+        <ul class="exp-points">
+          <li><span></span>Took full ownership of the product sprint lifecycle on Azure DevOps — from user story creation and bug logging to sprint validation and release readiness — ensuring zero gaps in delivery.</li>
+          <li><span></span>Led cross-functional collaboration with UI/UX, development, and QA teams to evaluate incoming requirements, align on priorities, and validate outcomes post-deployment with precision.</li>
+          <li><span></span>Independently authored Release Advisories and Product Guides for every version, establishing a reliable documentation standard adopted across the product team.</li>
+          <li><span></span>Served as the primary quality checkpoint — personally testing all user stories and bug fixes end-to-end before sign-off, significantly reducing post-release defects.</li>
+          <li><span></span>Proactively monitored the platform daily, identifying and driving resolution of issues before they escalated — maintaining product stability and user trust.</li>
+          <li><span></span>Owned and maintained a comprehensive tracking system for issues, dashboards, and sprint backlogs — bringing full visibility and accountability to the product pipeline.</li>
         </ul>
       </div>
     </div>
@@ -727,7 +756,7 @@ footer {
   <h2 class="contact-title">Open to New Roles</h2>
   <p class="contact-sub">Looking for Product Manager opportunities where technology creates real-world impact.</p>
   <div class="contact-grid">
-    <a href="mailto:22shruti05@gmail.com" class="contact-link">✉️ 22shruti05@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#d3e1e1a0bba1a6a7bae3e693b4beb2babffdb0bcbe" class="contact-link">✉️ <span class="__cf_email__" data-cfemail="eedcdc9d869c9b9a87dedbae89838f8782c08d8183">[email&#160;protected]</span></a>
     <a href="tel:+917505250477" class="contact-link">📞 +91 75052 50477</a>
     <a href="https://linkedin.com/in/shruti-sharma-b203401b9" target="_blank" class="contact-link">🔗 LinkedIn</a>
     <a href="https://medium.com/@22shruti05" target="_blank" class="contact-link">✍️ Medium</a>
@@ -736,20 +765,10 @@ footer {
 
 <footer>© 2026 Shruti Sharma · Built with purpose</footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   window.addEventListener('scroll', () => {
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
   });
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 100);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
