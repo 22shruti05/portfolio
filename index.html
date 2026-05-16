@@ -1,755 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Shruti Sharma — Product Manager</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --navy: #0D1B2A;
-  --navy2: #1A3C5E;
-  --amber: #F5A623;
-  --amber-light: #FFD080;
-  --green: #1E5C3A;
-  --cream: #FDFBF7;
-  --warm: #F0EBE3;
-  --text: #1A1A1A;
-  --muted: #6E6860;
-  --white: #ffffff;
-  --glass: rgba(255,255,255,0.08);
-  --glass-border: rgba(255,255,255,0.15);
+:root{
+  --ink:#0e0e0c;--ink2:#3a3a36;--ink3:#7a7a74;
+  --paper:#f9f8f4;--paper2:#f0ede6;
+  --line:rgba(14,14,12,0.1);--line2:rgba(14,14,12,0.15);
+  --s1:#E1F5EE;--s2:#EEEDFE;--s3:#FAEEDA;--s4:#FAECE7;--s5:#E6F1FB;
+  --teal:#0F6E56;--purple:#3C3489;--amber:#854F0B;--coral:#993C1D;--blue:#185FA5;
+  --teal-mid:#1D9E75;
 }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Outfit', sans-serif;
-  background: var(--cream);
-  color: var(--text);
-  overflow-x: hidden;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Syne',sans-serif;color:var(--ink);overflow-x:hidden;background:var(--paper)}
 
 /* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  padding: 22px 70px;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: all 0.4s;
+nav{
+  position:sticky;top:0;z-index:300;
+  background:rgba(249,248,244,0.93);backdrop-filter:blur(18px);
+  border-bottom:0.5px solid var(--line2);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:56px;
 }
-nav.scrolled {
-  background: rgba(13,27,42,0.95);
-  backdrop-filter: blur(16px);
-  padding: 16px 70px;
-  box-shadow: 0 1px 40px rgba(0,0,0,0.3);
-}
-.nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  color: white; font-size: 1.5rem; font-weight: 600;
-  text-decoration: none; letter-spacing: 0.5px;
-}
-.nav-links { display: flex; gap: 36px; }
-.nav-links a {
-  color: rgba(255,255,255,0.6);
-  text-decoration: none; font-size: 13px;
-  font-weight: 400; letter-spacing: 1px;
-  text-transform: uppercase; transition: color 0.2s;
-  position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -4px; left: 0;
-  width: 0; height: 1px; background: var(--amber);
-  transition: width 0.3s;
-}
-.nav-links a:hover { color: white; }
-.nav-links a:hover::after { width: 100%; }
+.nav-logo{font-size:15px;font-weight:800;letter-spacing:-0.3px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font-size:12px;font-weight:700;padding:7px 18px;border:1.5px solid var(--ink);border-radius:40px;color:var(--ink);text-decoration:none;transition:all 0.2s}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+
+/* SECTIONS with full bg colors */
+.section-wrap{width:100%}
+.s-hero  {background:var(--paper)}
+.s-stats {background:var(--s5)}
+.s-work  {background:var(--paper2)}
+.s-skills{background:var(--s1)}
+.s-mindset{background:var(--s2)}
+.s-timeline{background:var(--s3)}
+.s-contact{background:var(--ink)}
+
+.inner{max-width:820px;margin:0 auto;padding:0 2.5rem}
 
 /* HERO */
-.hero {
-  min-height: 100vh;
-  background: var(--navy);
-  display: grid;
-  grid-template-columns: 55% 45%;
-  position: relative;
-  overflow: hidden;
+.hero-inner{
+  padding:5rem 0 4rem;
+  display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:end;
 }
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(245,166,35,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(30,92,58,0.15) 0%, transparent 60%);
-  animation: meshShift 12s ease-in-out infinite alternate;
+.hero-eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1.2rem;display:flex;align-items:center;gap:8px;
 }
-.hero::after {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
+.hero-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--teal)}
+.hero-name{
+  font-family:'Playfair Display',serif;font-size:62px;font-weight:700;
+  line-height:1.0;letter-spacing:-2px;color:var(--ink);
 }
-@keyframes meshShift {
-  from { opacity: 0.8; transform: scale(1); }
-  to   { opacity: 1; transform: scale(1.04); }
+.hero-name em{font-style:italic;font-weight:400;color:var(--ink2)}
+.hero-lines{display:flex;flex-direction:column;gap:8px;margin-top:1.4rem}
+.hline{
+  font-size:15px;font-weight:600;padding:10px 18px;border-radius:12px;
+  display:inline-block;width:fit-content;color:var(--ink);
+  transform:translateX(-12px);opacity:0;
+  transition:transform 0.5s ease,opacity 0.5s ease;
 }
+.hline.visible{transform:translateX(0);opacity:1}
+.hline:nth-child(1){background:#C0DD97;transition-delay:0.1s}
+.hline:nth-child(2){background:#CECBF6;transition-delay:0.22s}
+.hline:nth-child(3){background:#FAC775;transition-delay:0.34s}
+.hero-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.5rem}
+.htag{
+  font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;
+  padding:5px 13px;border-radius:40px;color:var(--ink);transition:all 0.2s;cursor:default;
+}
+.htag:hover{transform:translateY(-3px) scale(1.05)}
+.ht0{background:#fff;border:1.5px solid var(--teal);color:var(--teal)}
+.ht1{background:var(--s5)}
+.ht2{background:var(--s1)}
+.ht3{background:var(--s2)}
+.ht4{background:var(--s3)}
+.ht5{background:var(--s4)}
+.hero-right{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.status-pill{
+  display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;
+  padding:9px 18px;border-radius:40px;background:#C0DD97;color:var(--ink);
+}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.exp-badge{font-size:11px;font-weight:600;color:var(--ink2);padding:6px 14px;border-radius:40px;background:var(--paper2);border:0.5px solid var(--line2)}
 
-.hero-left {
-  padding: 130px 80px 80px;
-  display: flex; flex-direction: column; justify-content: center;
-  position: relative; z-index: 2;
+/* STATS */
+.stats-inner{padding:2.5rem 0}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(14,14,12,0.15);border-radius:16px;overflow:hidden;
 }
+.sc{background:var(--s5);padding:1.5rem 1.25rem;transition:background 0.2s;cursor:default}
+.sc:hover{background:#B5D4F4}
+.sc .n{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;line-height:1;letter-spacing:-1px;color:var(--ink)}
+.sc .n sup{font-size:18px;vertical-align:top;margin-top:5px;display:inline-block}
+.sc .l{font-size:11px;color:var(--ink2);margin-top:7px;text-transform:uppercase;letter-spacing:0.07em;font-weight:500}
 
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid rgba(245,166,35,0.4);
-  background: rgba(245,166,35,0.1);
-  color: var(--amber-light);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 2.5px; text-transform: uppercase;
-  padding: 7px 16px; border-radius: 40px;
-  margin-bottom: 32px; width: fit-content;
-  animation: fadeUp 0.8s 0.1s both;
-}
-.hero-badge::before {
-  content: ''; width: 6px; height: 6px;
-  background: var(--amber); border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.4; transform: scale(0.8); }
-}
+/* SECTION HEADER */
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:1.5rem;padding-top:2.5rem}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
+.sec-line{flex:1;height:0.5px;background:rgba(14,14,12,0.2)}
+.sec-num{font-size:11px;font-weight:500;color:var(--ink3)}
 
-.hero-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.5rem, 6vw, 6.5rem);
-  font-weight: 700;
-  color: white; line-height: 0.95;
-  margin-bottom: 28px;
-  animation: fadeUp 0.8s 0.25s both;
+/* CASE CARDS */
+.cases{display:flex;flex-direction:column;gap:12px;padding-bottom:3rem}
+.cc{
+  border:0.5px solid rgba(14,14,12,0.15);border-radius:16px;padding:1.75rem 2rem;
+  background:var(--paper);transition:border-color 0.25s,transform 0.25s;
 }
-.hero-name span {
-  display: block;
-  background: linear-gradient(135deg, var(--amber-light), var(--amber));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-desc {
-  color: rgba(255,255,255,0.6);
-  font-size: 1.05rem; font-weight: 300; line-height: 1.8;
-  max-width: 420px; margin-bottom: 48px;
-  animation: fadeUp 0.8s 0.4s both;
-}
-
-.hero-cta {
-  display: flex; gap: 14px; flex-wrap: wrap;
-  animation: fadeUp 0.8s 0.55s both;
-}
-
-.btn {
-  padding: 13px 30px; border-radius: 6px;
-  font-size: 13px; font-weight: 500;
-  text-decoration: none; transition: all 0.3s;
-  letter-spacing: 0.5px; cursor: pointer; border: none;
-  display: inline-flex; align-items: center; gap: 8px;
-}
-.btn-primary {
-  background: linear-gradient(135deg, var(--amber), #e8920a);
-  color: white;
-  box-shadow: 0 4px 20px rgba(245,166,35,0.35);
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,166,35,0.5); }
-.btn-ghost {
-  border: 1px solid rgba(255,255,255,0.25);
-  color: rgba(255,255,255,0.85); background: transparent;
-}
-.btn-ghost:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
-
-.hero-right {
-  display: flex; align-items: center; justify-content: center;
-  padding: 120px 60px 80px 20px;
-  position: relative; z-index: 2;
-}
-
-.stat-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 16px; width: 100%; max-width: 380px;
-}
-
-.stat-card {
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(20px);
-  border-radius: 16px; padding: 28px 24px;
-  text-align: center;
-  transition: transform 0.3s, background 0.3s;
-  animation: fadeUp 0.8s both;
-}
-.stat-card:nth-child(1) { animation-delay: 0.3s; }
-.stat-card:nth-child(2) { animation-delay: 0.45s; }
-.stat-card:nth-child(3) { animation-delay: 0.6s; }
-.stat-card:nth-child(4) { animation-delay: 0.75s; }
-.stat-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.13); }
-.stat-card.featured {
-  background: linear-gradient(135deg, rgba(245,166,35,0.25), rgba(245,166,35,0.1));
-  border-color: rgba(245,166,35,0.4);
-}
-
-.stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.8rem; font-weight: 700;
-  color: white; line-height: 1; margin-bottom: 6px;
-}
-.stat-card.featured .stat-num { color: var(--amber-light); }
-.stat-lbl { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.5px; line-height: 1.4; }
-
-.scroll-hint {
-  position: absolute; bottom: 36px; left: 50%;
-  transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  color: rgba(255,255,255,0.25); font-size: 10px; letter-spacing: 2px;
-  text-transform: uppercase; z-index: 2;
-  animation: fadeUp 1s 1s both;
-}
-.scroll-line {
-  width: 1px; height: 40px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
-  animation: scrollDrop 2s ease-in-out infinite;
-}
-@keyframes scrollDrop {
-  0%, 100% { transform: scaleY(1); opacity: 1; }
-  50%       { transform: scaleY(0.4); opacity: 0.3; }
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* SHARED */
-.section { padding: 110px 70px; }
-
-.label {
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 3px; text-transform: uppercase;
-  color: var(--amber); margin-bottom: 12px;
-  display: flex; align-items: center; gap: 10px;
-}
-.label::before {
-  content: ''; width: 24px; height: 2px;
-  background: var(--amber); display: block;
-}
-
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 700; color: var(--navy);
-  line-height: 1.15; margin-bottom: 60px;
-}
-
-.reveal {
-  opacity: 0; transform: translateY(36px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* EXPERIENCE */
-.exp-section { background: white; }
-.exp-inner { max-width: 1100px; margin: 0 auto; }
-
-.exp-card {
-  display: grid; grid-template-columns: 240px 1fr;
-  gap: 60px; padding: 56px 0;
-  border-bottom: 1px solid #EDEBE8;
-}
-
-.exp-company {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.55rem; font-weight: 700;
-  color: var(--navy); margin-bottom: 6px;
-}
-.exp-period {
-  font-size: 12px; font-weight: 600;
-  color: var(--amber); letter-spacing: 0.5px;
-  margin-bottom: 4px; text-transform: uppercase;
-}
-.exp-location { font-size: 13px; color: var(--muted); }
-.exp-badge {
-  display: inline-block;
-  background: var(--warm); color: var(--navy2);
-  font-size: 11px; font-weight: 500;
-  padding: 5px 12px; border-radius: 20px; margin-top: 16px;
-}
-
-.exp-role {
-  font-size: 1.1rem; font-weight: 600;
-  color: var(--navy); margin-bottom: 24px;
-  padding-bottom: 20px; border-bottom: 1px solid #EDEBE8;
-}
-
-.exp-points { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-.exp-points li {
-  display: flex; gap: 12px;
-  font-size: 0.93rem; color: #3D3D3D; line-height: 1.75;
-}
-.exp-points li::before {
-  content: '';
-  min-width: 6px; height: 6px;
-  background: var(--amber); border-radius: 50%;
-  margin-top: 9px; flex-shrink: 0;
-}
+.cc:hover{border-color:var(--ink2);transform:translateY(-3px)}
+.cc-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.badge{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 11px;border-radius:40px}
+.b1{background:#9FE1CB;color:#085041}
+.b2{background:#CECBF6;color:#26215C}
+.b3{background:#EF9F27;color:#412402}
+.b4{background:#F0997B;color:#4A1B0C}
+.cc-num{font-size:13px;font-weight:500;color:var(--ink3)}
+.ct{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:8px;line-height:1.2;color:var(--ink)}
+.cs{font-size:13.5px;color:var(--ink2);line-height:1.65;margin-bottom:16px;font-weight:400}
+.pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.pill{font-size:12px;font-weight:600;padding:4px 13px;border-radius:40px;background:var(--paper2);color:var(--ink);border:0.5px solid rgba(14,14,12,0.12)}
+.steps{display:flex;flex-wrap:wrap;gap:5px}
+.step{font-size:11px;font-weight:500;padding:4px 10px;border-radius:6px;background:var(--paper2);color:var(--ink2);display:flex;align-items:center;gap:5px}
+.sn{width:16px;height:16px;border-radius:50%;background:var(--ink);color:var(--paper);font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 
 /* SKILLS */
-.skills-section {
-  background: var(--navy);
-  position: relative; overflow: hidden;
+.skills-inner{padding-bottom:3rem}
+.skills-intro{font-size:13px;color:var(--ink2);margin-bottom:1rem;font-weight:400}
+.board{
+  display:flex;flex-wrap:wrap;gap:9px;padding:1.5rem;
+  background:rgba(255,255,255,0.6);border-radius:16px;border:0.5px solid rgba(14,14,12,0.12);
+  min-height:160px;user-select:none;
 }
-.skills-section::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 50% 80% at 90% 50%, rgba(245,166,35,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 60% at 0% 50%, rgba(30,92,58,0.1) 0%, transparent 60%);
+.chip{
+  display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:40px;
+  border:1px solid rgba(14,14,12,0.15);background:var(--paper);
+  font-size:13px;font-weight:500;cursor:grab;color:var(--ink);
+  transition:transform 0.15s,border-color 0.15s;touch-action:none;
 }
-.skills-section .label { color: var(--amber-light); }
-.skills-section .label::before { background: var(--amber-light); }
-.skills-section .section-title { color: white; }
+.chip:active{cursor:grabbing}
+.chip.dragging{opacity:0.55;transform:scale(1.06) rotate(-1.5deg);border-color:var(--ink);z-index:100}
+.chip.pop{animation:chipPop 0.4s cubic-bezier(0.34,1.56,0.64,1) both}
+.chip i{font-size:15px;color:var(--ink3)}
+.chip:hover{transform:translateY(-3px) scale(1.02);border-color:var(--ink2)}
+.chip.dragging:hover{transform:scale(1.06) rotate(-1.5deg)}
+.clvl{font-size:10px;font-weight:700;padding:2px 7px;border-radius:40px;margin-left:3px;color:var(--ink)}
+.e{background:#9FE1CB}
+.s{background:#B5D4F4}
+.g{background:#FAC775}
+@keyframes chipPop{from{transform:scale(0.5);opacity:0}60%{transform:scale(1.1)}to{transform:scale(1);opacity:1}}
 
-.skills-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 24px; position: relative; z-index: 1;
-  max-width: 1100px; margin: 0 auto;
+/* MINDSET */
+.mindset-inner{padding-bottom:3rem}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mc{
+  background:rgba(255,255,255,0.65);border:0.5px solid rgba(14,14,12,0.12);
+  border-radius:14px;padding:1.25rem;transition:transform 0.2s,background 0.2s;
 }
+.mc:hover{transform:translateY(-4px);background:#fff}
+.mic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+.mc h4{font-size:14px;font-weight:700;margin-bottom:5px;color:var(--ink)}
+.mc p{font-size:12px;color:var(--ink2);line-height:1.55;font-weight:400}
 
-.skill-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 16px; padding: 36px;
-  transition: transform 0.3s, background 0.3s, border-color 0.3s;
-}
-.skill-card:hover {
-  transform: translateY(-6px);
-  background: rgba(255,255,255,0.09);
-  border-color: rgba(245,166,35,0.35);
-}
-.skill-icon { font-size: 1.8rem; margin-bottom: 16px; }
-.skill-card h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem; font-weight: 700;
-  color: white; margin-bottom: 20px;
-}
-.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.skill-tag {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.7);
-  font-size: 12px; padding: 5px 13px;
-  border-radius: 20px; transition: all 0.2s;
-}
-.skill-tag:hover {
-  background: rgba(245,166,35,0.2);
-  border-color: rgba(245,166,35,0.4);
-  color: var(--amber-light);
-}
-
-/* WRITING */
-.writing-section { background: var(--warm); }
-.article-inner { max-width: 1100px; margin: 0 auto; }
-
-.article-card {
-  display: grid; grid-template-columns: 1fr 1.2fr;
-  border-radius: 20px; overflow: hidden;
-  box-shadow: 0 20px 70px rgba(0,0,0,0.1);
-  transition: box-shadow 0.4s, transform 0.4s;
-}
-.article-card:hover {
-  box-shadow: 0 30px 90px rgba(0,0,0,0.15);
-  transform: translateY(-4px);
-}
-
-.article-visual {
-  background: linear-gradient(150deg, var(--navy) 0%, #0e3250 40%, var(--green) 100%);
-  padding: 56px 50px;
-  display: flex; flex-direction: column; justify-content: space-between;
-  position: relative; overflow: hidden; min-height: 400px;
-}
-.article-visual::before {
-  content: '';
-  position: absolute; bottom: -60px; right: -60px;
-  width: 280px; height: 280px;
-  border: 60px solid rgba(245,166,35,0.12);
-  border-radius: 50%;
-}
-.article-visual::after {
-  content: '';
-  position: absolute; top: -40px; left: -40px;
-  width: 180px; height: 180px;
-  border: 40px solid rgba(255,255,255,0.04);
-  border-radius: 50%;
-}
-
-.article-tag {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(245,166,35,0.2);
-  border: 1px solid rgba(245,166,35,0.4);
-  color: var(--amber-light);
-  font-size: 11px; letter-spacing: 2px;
-  text-transform: uppercase; padding: 6px 14px;
-  border-radius: 40px; width: fit-content;
-  position: relative; z-index: 1;
-}
-.article-headline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.1rem; font-weight: 700;
-  color: white; line-height: 1.2;
-  position: relative; z-index: 1;
-}
-.article-sub {
-  color: rgba(255,255,255,0.5);
-  font-size: 0.88rem; font-style: italic;
-  position: relative; z-index: 1;
-}
-
-.article-content {
-  background: white; padding: 52px 50px;
-  display: flex; flex-direction: column; justify-content: space-between;
-}
-.article-meta {
-  font-size: 12px; color: var(--muted);
-  margin-bottom: 24px;
-  display: flex; align-items: center; gap: 10px;
-}
-.article-meta span { display: inline-block; width: 3px; height: 3px; background: var(--muted); border-radius: 50%; }
-.article-body { font-size: 0.95rem; line-height: 1.8; color: #3D3D3D; }
-.article-body p { margin-bottom: 14px; }
-
-.article-quote {
-  border-left: 3px solid var(--amber);
-  padding: 14px 20px; margin: 20px 0;
-  background: rgba(245,166,35,0.05);
-  border-radius: 0 8px 8px 0;
-}
-.article-quote p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem; font-style: italic;
-  color: var(--navy2); line-height: 1.6; margin: 0;
-}
-
-.read-more {
-  display: inline-flex; align-items: center; gap: 10px;
-  color: var(--navy2); font-weight: 600;
-  font-size: 14px; text-decoration: none;
-  margin-top: 28px; transition: gap 0.2s, color 0.2s;
-  width: fit-content;
-  border-bottom: 2px solid var(--amber);
-  padding-bottom: 3px;
-}
-.read-more:hover { gap: 16px; color: var(--amber); }
-
-/* EDUCATION */
-.edu-section { background: white; padding: 80px 70px; }
-.edu-inner { max-width: 1100px; margin: 0 auto; }
-
-.edu-card {
-  display: flex; align-items: flex-start; gap: 28px;
-  background: var(--cream); border: 1px solid #E8E4DF;
-  border-radius: 16px; padding: 40px; max-width: 680px;
-  transition: box-shadow 0.3s;
-}
-.edu-card:hover { box-shadow: 0 10px 40px rgba(0,0,0,0.07); }
-.edu-icon {
-  width: 52px; height: 52px; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--navy), var(--navy2));
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
-}
-.edu-body h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 700;
-  color: var(--navy); margin-bottom: 6px;
-}
-.edu-body p { font-size: 0.9rem; color: var(--muted); margin-bottom: 4px; }
-.edu-period {
-  font-size: 12px; font-weight: 600;
-  color: var(--amber); letter-spacing: 0.5px;
-  text-transform: uppercase; margin-top: 4px;
-}
+/* TIMELINE */
+.timeline-inner{padding-bottom:3rem}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:'';position:absolute;left:6px;top:10px;bottom:0;width:1px;background:rgba(14,14,12,0.2)}
+.tli{position:relative;margin-bottom:1.75rem}
+.tli::before{content:'';position:absolute;left:-26px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--s3);border:2px solid var(--amber);transition:background 0.2s}
+.tli:hover::before{background:var(--ink)}
+.td{font-size:11px;color:var(--ink2);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;font-weight:500}
+.tt{font-size:16px;font-weight:700;color:var(--ink)}
+.ts{font-size:13px;color:var(--ink2);font-weight:400;margin-top:3px}
 
 /* CONTACT */
-.contact-section {
-  background: var(--navy);
-  padding: 110px 70px; text-align: center;
-  position: relative; overflow: hidden;
+.cblock-inner{padding:3rem 0}
+.cblock{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.cblock h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--paper);letter-spacing:-0.5px}
+.cblock p{font-size:13px;color:rgba(249,248,244,0.5);margin-top:5px;font-weight:400}
+.clinks{display:flex;gap:8px;flex-wrap:wrap}
+.cl{
+  display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+  padding:9px 18px;border-radius:40px;border:1px solid rgba(249,248,244,0.25);
+  color:rgba(249,248,244,0.85);text-decoration:none;transition:all 0.2s;
 }
-.contact-section::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(245,166,35,0.1) 0%, transparent 60%);
-}
-.contact-section .label { justify-content: center; color: var(--amber-light); margin-bottom: 16px; }
-.contact-section .label::before { background: var(--amber-light); }
-.contact-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700; color: white;
-  margin-bottom: 14px; position: relative; z-index: 1;
-}
-.contact-sub {
-  color: rgba(255,255,255,0.5); font-size: 1rem; font-weight: 300;
-  margin-bottom: 52px; position: relative; z-index: 1;
-}
-.contact-grid {
-  display: flex; justify-content: center;
-  gap: 16px; flex-wrap: wrap;
-  position: relative; z-index: 1;
-}
-.contact-link {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 14px 28px;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 10px;
-  background: rgba(255,255,255,0.05);
-  color: rgba(255,255,255,0.8);
-  text-decoration: none; font-size: 14px;
-  transition: all 0.3s; backdrop-filter: blur(10px);
-}
-.contact-link:hover {
-  background: rgba(245,166,35,0.15);
-  border-color: rgba(245,166,35,0.4);
-  color: white; transform: translateY(-3px);
-}
+.cl:hover{background:rgba(249,248,244,0.1);color:var(--paper);border-color:rgba(249,248,244,0.5)}
 
-footer {
-  background: #070F18;
-  text-align: center; padding: 20px;
-  color: rgba(255,255,255,0.2); font-size: 12px;
-}
+footer{text-align:center;font-size:12px;color:rgba(249,248,244,0.35);padding:1.25rem 0;border-top:0.5px solid rgba(249,248,244,0.1);background:var(--ink);letter-spacing:0.04em}
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  nav { padding: 20px 24px; }
-  nav.scrolled { padding: 14px 24px; }
-  .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 120px 28px 50px; }
-  .hero-right { padding: 20px 28px 80px; justify-content: flex-start; }
-  .stat-grid { max-width: 100%; }
-  .section { padding: 80px 28px; }
-  .exp-card { grid-template-columns: 1fr; gap: 20px; }
-  .skills-grid { grid-template-columns: 1fr; }
-  .article-card { grid-template-columns: 1fr; }
-  .edu-section { padding: 70px 28px; }
-  .contact-section { padding: 80px 28px; }
+/* SCROLL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-22px);transition:opacity 0.5s ease,transform 0.5s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{animation:fadeUp 0.5s 0s ease both}
+.hero-name{animation:fadeUp 0.5s 0.1s ease both}
+.hero-right{animation:fadeUp 0.5s 0.2s ease both}
+.hero-tags{animation:fadeUp 0.5s 0.35s ease both}
+.stats-grid{animation:fadeUp 0.6s 0.1s ease both}
+
+@media(max-width:640px){
+  .hero-inner{grid-template-columns:1fr}.hero-right{align-items:flex-start}.hero-name{font-size:42px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}.mgrid{grid-template-columns:1fr 1fr}
+  nav{padding:0 1rem}.inner{padding:0 1.25rem}.cblock{flex-direction:column}
+  .hero-inner{padding:3rem 0 2.5rem}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="#" class="nav-logo">Shruti Sharma</a>
-  <div class="nav-links">
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#writing">Writing</a>
-    <a href="#contact">Contact</a>
-  </div>
+<nav>
+  <span class="nav-logo">SS</span>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#mindset">Mindset</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="mailto:22shruti05@gmail.com" class="nav-cta">Hire me</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-left">
-    <div class="hero-badge">Product Manager</div>
-    <h1 class="hero-name">SHRUTI<br><span>SHARMA</span></h1>
-    <p class="hero-desc">I turn complex systems into products people trust — from IoT solar infrastructure to clean energy experiences that scale across India.</p>
-    <div class="hero-cta">
-      <a href="#experience" class="btn btn-primary">View My Work ↓</a>
-      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="stat-grid">
-      <div class="stat-card featured">
-        <div class="stat-num">60K+</div>
-        <div class="stat-lbl">Platform Users</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">500+</div>
-        <div class="stat-lbl">MW Deployed</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">30%</div>
-        <div class="stat-lbl">Revenue Growth</div>
-      </div>
-      <div class="stat-card featured">
-        <div class="stat-num">4</div>
-        <div class="stat-lbl">Apps Launched</div>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    Scroll
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="section exp-section" id="experience">
-  <div class="exp-inner">
-    <div class="label reveal">Work History</div>
-    <h2 class="section-title reveal">What I've Built</h2>
-    <div class="exp-card reveal">
-      <div class="exp-left">
-        <div class="exp-company">Jio Platforms</div>
-        <div class="exp-period">June 2023 – Present</div>
-        <div class="exp-location">Bangalore, India</div>
-        <div class="exp-badge">CleanTech · IoT</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-role">Product Manager — SunGenie (Clean Energy IoT Platform)</div>
-        <ul class="exp-points">
-          <li><span></span>Owned end-to-end product vision for SunGenie, scaling real-time solar monitoring to 60K+ users across residential, commercial, and utility sectors — positioning it as a leading CleanTech IoT platform in India.</li>
-          <li><span></span>Launched 4 mobile apps (Android & iOS) on schedule with 3.5+ App Store ratings; led integration of 300+ solar inverters across 10+ enterprise clients.</li>
-          <li><span></span>Drove cross-functional execution with engineering, QA, UX, and ops using Agile/Scrum — improving sprint velocity by 12% and reducing operational complexity by 30%.</li>
-          <li><span></span>Implemented predictive maintenance and remote diagnostics, cutting site downtime by 20% and O&M costs by 18%, while maintaining 99% system uptime.</li>
-          <li><span></span>Used Amplitude and Productboard to guide feature prioritization — boosting adoption by 15% and contributing to 30% annual revenue growth.</li>
-          <li><span></span>Designed high-fidelity wireframes and prototypes in Figma, ensuring tight alignment between UX decisions and business KPIs across all product surfaces.</li>
-          <li><span></span>Delivered unified monitoring and metering dashboards for enterprise clients, resolving 200+ post-deployment issues and reducing operational complexity by 30%.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section class="section skills-section" id="skills">
-  <div style="max-width:1100px; margin: 0 auto;">
-    <div class="label reveal">Capabilities</div>
-    <h2 class="section-title reveal">Skills & Tools</h2>
-    <div class="skills-grid">
-      <div class="skill-card reveal">
-        <div class="skill-icon">🧭</div>
-        <h3>Product & Strategy</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Roadmapping</span>
-          <span class="skill-tag">Backlog Prioritization</span>
-          <span class="skill-tag">Sprint Planning</span>
-          <span class="skill-tag">KPI Tracking</span>
-          <span class="skill-tag">Go-to-Market Strategy</span>
-          <span class="skill-tag">A/B Testing</span>
-          <span class="skill-tag">User Research</span>
-          <span class="skill-tag">Competitive Analysis</span>
-          <span class="skill-tag">Feature Prioritization</span>
-          <span class="skill-tag">OKR Setting</span>
-          <span class="skill-tag">Product Discovery</span>
-          <span class="skill-tag">Customer Journey Mapping</span>
-          <span class="skill-tag">North Star Metric</span>
+<!-- HERO — paper white -->
+<div class="section-wrap s-hero">
+  <div class="inner">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Product Manager · Bengaluru</div>
+        <h1 class="hero-name">Shruti Sharma</h1>
+        <div class="hero-lines" id="heroLines">
+          <div class="hline">3 years building 0→1 platforms at Jio</div>
+          <div class="hline">turning messy user problems into shipped products</div>
+          <div class="hline">measured, loved — using data, not gut feelings</div>
+        </div>
+        <div class="hero-tags">
+          <span class="htag ht0">Open to work</span>
+          <span class="htag ht1">SaaS</span>
+          <span class="htag ht2">IoT</span>
+          <span class="htag ht3">Fintech</span>
+          <span class="htag ht4">B2C</span>
+          <span class="htag ht5">Enterprise</span>
         </div>
       </div>
-      <div class="skill-card reveal">
-        <div class="skill-icon">🛠</div>
-        <h3>Tools & Technology</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Figma</span>
-          <span class="skill-tag">Azure DevOps</span>
-          <span class="skill-tag">JIRA</span>
-          <span class="skill-tag">Amplitude</span>
-          <span class="skill-tag">Productboard</span>
-          <span class="skill-tag">Tableau</span>
-          <span class="skill-tag">MS Excel</span>
+      <div class="hero-right">
+        <div class="status-pill"><span class="sdot"></span>Available now</div>
+        <span class="exp-badge">3 yrs experience</span>
+        <span class="exp-badge">B.Tech · ECE</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS — blue bg -->
+<div class="section-wrap s-stats">
+  <div class="inner">
+    <div class="stats-inner">
+      <div class="stats-grid">
+        <div class="sc"><div class="n">60<sup>K+</sup></div><div class="l">Platform users</div></div>
+        <div class="sc"><div class="n">10<sup>+</sup></div><div class="l">Enterprise clients</div></div>
+        <div class="sc"><div class="n">30<sup>%</sup></div><div class="l">YoY revenue growth</div></div>
+        <div class="sc"><div class="n">99<sup>%</sup></div><div class="l">Platform uptime</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WORK — warm paper bg -->
+<div class="section-wrap s-work" id="work">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="sec-label">Case studies</span>
+      <div class="sec-line"></div>
+      <span class="sec-num">04</span>
+    </div>
+    <div class="cases">
+
+      <div class="cc reveal">
+        <div class="cc-hdr"><span class="badge b1">Discovery → Launch</span><span class="cc-num">01</span></div>
+        <h3 class="ct">Predictive maintenance & smart alerts</h3>
+        <p class="cs">Users were silently missing critical device failure signals. I analyzed support ticket data to surface failure patterns across 300+ IoT devices, then defined a configurable threshold and push notification system — built it, shipped it, validated a 20% drop in downtime.</p>
+        <div class="pills">
+          <span class="pill">↓ 20% downtime incidents</span>
+          <span class="pill">300+ devices</span>
+          <span class="pill">10+ enterprise accounts</span>
+        </div>
+        <div class="steps">
+          <span class="step"><span class="sn">1</span>Ticket analysis</span>
+          <span class="step"><span class="sn">2</span>PRD + threshold spec</span>
+          <span class="step"><span class="sn">3</span>Figma → eng handoff</span>
+          <span class="step"><span class="sn">4</span>A/B validated</span>
+          <span class="step"><span class="sn">5</span>Post-launch KPIs</span>
         </div>
       </div>
-      <div class="skill-card reveal">
-        <div class="skill-icon">🤝</div>
-        <h3>Collaboration</h3>
-        <div class="skill-tags">
-          <span class="skill-tag">Cross-functional Leadership</span>
-          <span class="skill-tag">Stakeholder Communication</span>
-          <span class="skill-tag">User Story Definition</span>
-          <span class="skill-tag">Agile / Scrum</span>
-          <span class="skill-tag">Business–Product Alignment</span>
+
+      <div class="cc reveal">
+        <div class="cc-hdr"><span class="badge b2">Growth</span><span class="cc-num">02</span></div>
+        <h3 class="ct">Dashboard UX overhaul — 15% adoption lift</h3>
+        <p class="cs">Amplitude flagged a quiet problem: users weren't engaging with core features. I led a full UX rethink — funnel analysis to A/B testing across segments — validating a 15% adoption uplift before rolling out to 60K+ users.</p>
+        <div class="pills">
+          <span class="pill">↑ 15% feature adoption</span>
+          <span class="pill">A/B tested</span>
+          <span class="pill">60K+ users</span>
+        </div>
+        <div class="steps">
+          <span class="step"><span class="sn">1</span>Amplitude audit</span>
+          <span class="step"><span class="sn">2</span>Hypothesis framing</span>
+          <span class="step"><span class="sn">3</span>Wireframes (Figma)</span>
+          <span class="step"><span class="sn">4</span>A/B experiment</span>
+          <span class="step"><span class="sn">5</span>Full rollout</span>
+        </div>
+      </div>
+
+      <div class="cc reveal">
+        <div class="cc-hdr"><span class="badge b3">0→1 Platform</span><span class="cc-num">03</span></div>
+        <h3 class="ct">Jio SunGenie CMS — built end-to-end</h3>
+        <p class="cs">Owned the complete lifecycle of Jio SunGenie — an IoT monitoring platform for residential, C&I, and utility solar. From initial vision through 4 mobile app versions and a web dashboard, coordinating 6+ teams and scaling to 60K users at 99% uptime.</p>
+        <div class="pills">
+          <span class="pill">4 app versions (3.5★)</span>
+          <span class="pill">5 data viz modules</span>
+          <span class="pill">↓ 20% support queries</span>
+        </div>
+        <div class="steps">
+          <span class="step"><span class="sn">1</span>30+ user interviews</span>
+          <span class="step"><span class="sn">2</span>BRD + PRD authoring</span>
+          <span class="step"><span class="sn">3</span>Azure DevOps sprints</span>
+          <span class="step"><span class="sn">4</span>6-team coordination</span>
+          <span class="step"><span class="sn">5</span>Release pipeline</span>
+        </div>
+      </div>
+
+      <div class="cc reveal">
+        <div class="cc-hdr"><span class="badge b4">Revenue</span><span class="cc-num">04</span></div>
+        <h3 class="ct">Enterprise onboarding redesign — 30% YoY growth</h3>
+        <p class="cs">Cohort analysis in Amplitude revealed where enterprise clients were silently dropping out. I redesigned the activation flows to reduce time-to-value, aligned GTM and engineering, and tied the outcome directly to 30% year-over-year revenue growth.</p>
+        <div class="pills">
+          <span class="pill">↑ 30% YoY revenue</span>
+          <span class="pill">Reduced time-to-value</span>
+          <span class="pill">Cohort-driven</span>
+        </div>
+        <div class="steps">
+          <span class="step"><span class="sn">1</span>Cohort drop-off analysis</span>
+          <span class="step"><span class="sn">2</span>RICE prioritization</span>
+          <span class="step"><span class="sn">3</span>Activation redesign</span>
+          <span class="step"><span class="sn">4</span>GTM coordination</span>
+          <span class="step"><span class="sn">5</span>Revenue tracking</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS — teal/green bg -->
+<div class="section-wrap s-skills" id="skills">
+  <div class="inner">
+    <div class="skills-inner">
+      <div class="sec-head reveal">
+        <span class="sec-label">Skills — drag to rearrange</span>
+        <div class="sec-line"></div>
+      </div>
+      <p class="skills-intro reveal">Grab any card and drag it to reorder. <strong>Expert</strong> · <strong>Strong</strong> · <strong>Good</strong></p>
+      <div class="board reveal" id="board"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MINDSET — purple bg -->
+<div class="section-wrap s-mindset" id="mindset">
+  <div class="inner">
+    <div class="mindset-inner">
+      <div class="sec-head reveal">
+        <span class="sec-label">How I think as a PM</span>
+        <div class="sec-line"></div>
+      </div>
+      <div class="mgrid">
+        <div class="mc reveal">
+          <div class="mic" style="background:#9FE1CB"><i class="ti ti-users" aria-hidden="true"></i></div>
+          <h4>Customer obsession</h4>
+          <p>I start with user pain, not features. 30+ interviews, cohort analysis, and support tickets before writing a single PRD.</p>
+        </div>
+        <div class="mc reveal">
+          <div class="mic" style="background:#B5D4F4"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+          <h4>Data before decisions</h4>
+          <p>Amplitude funnels, A/B tests, RICE scoring — I validate hypotheses before committing engineering cycles.</p>
+        </div>
+        <div class="mc reveal">
+          <div class="mic" style="background:#FAC775"><i class="ti ti-arrows-cross" aria-hidden="true"></i></div>
+          <h4>Cross-functional glue</h4>
+          <p>Single point of contact across 6+ teams — engineering, design, QA, business, hardware, and onboarding.</p>
+        </div>
+        <div class="mc reveal">
+          <div class="mic" style="background:#F5C4B3"><i class="ti ti-rocket" aria-hidden="true"></i></div>
+          <h4>Ship and iterate</h4>
+          <p>4 mobile app versions shipped with 3.5★ ratings. Sprint velocity up 12%. I close loops — not just open them.</p>
+        </div>
+        <div class="mc reveal">
+          <div class="mic" style="background:#9FE1CB"><i class="ti ti-target" aria-hidden="true"></i></div>
+          <h4>Outcome, not output</h4>
+          <p>Every feature tied to a KPI. Adoption, downtime, revenue, query volume — I track what I ship.</p>
+        </div>
+        <div class="mc reveal">
+          <div class="mic" style="background:#CECBF6"><i class="ti ti-eye" aria-hidden="true"></i></div>
+          <h4>Proactive problem finding</h4>
+          <p>I surface user problems before they're reported — using funnel data, cohort trends, and support patterns.</p>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- WRITING -->
-<section class="section writing-section" id="writing">
-  <div class="article-inner">
-    <div class="label reveal">Thinking Out Loud</div>
-    <h2 class="section-title reveal">Featured Writing</h2>
-    <div class="article-card reveal">
-      <div class="article-visual">
-        <div class="article-tag">☀️ Product Thinking</div>
-        <div class="article-headline">From Solar Panels<br>to Coffee Breaks</div>
-        <div class="article-sub">What visibility does to how we think about infrastructure</div>
+<!-- TIMELINE — amber bg -->
+<div class="section-wrap s-timeline" id="about">
+  <div class="inner">
+    <div class="timeline-inner">
+      <div class="sec-head reveal">
+        <span class="sec-label">Timeline</span>
+        <div class="sec-line"></div>
       </div>
-      <div class="article-content">
+      <div class="tl">
+        <div class="tli reveal">
+          <div class="td">Jun 2023 – Present · 2 years</div>
+          <div class="tt">Product Manager — Jio Platforms Limited</div>
+          <div class="ts">SunGenie Central Monitoring System · IoT + Solar · Bengaluru, India</div>
+        </div>
+        <div class="tli reveal">
+          <div class="td">2019 – 2023</div>
+          <div class="tt">B.Tech — Electronics & Communication Engineering</div>
+          <div class="ts">Jaypee Institute of Information Technology, Noida</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT — black bg -->
+<div class="section-wrap s-contact">
+  <div class="inner">
+    <div class="cblock-inner">
+      <div class="cblock">
         <div>
-          <div class="article-meta">Feb 2026 <span></span> 3 min read <span></span> Medium</div>
-          <div class="article-body">
-            <p>Solar panels usually sit quietly in the background. When users can clearly see how much energy is being generated, when performance drops, and how the system behaves — something subtle happens.</p>
-            <div class="article-quote">
-              <p>"What users can see, they care about. Monitoring dashboards aren't really about charts or numbers — they're about confidence."</p>
-            </div>
-            <p>Once that confidence exists, people stop asking <em>"Is it working?"</em> and start asking <em>"What more can this system enable?"</em> — a solar garden, no walls, no gates, someone sitting inside with coffee knowing the whole space runs on solar. ☀️☕🌿</p>
-          </div>
+          <h3>Let's build something.</h3>
+          <p>Open to PM roles in SaaS, fintech, or consumer products.</p>
         </div>
-        <a href="https://medium.com/@22shruti05/from-solar-panels-to-coffee-breaks-solar-panels-usually-sit-quietly-in-the-background-9fa93e93cb5e" target="_blank" class="read-more">Read on Medium →</a>
+        <div class="clinks">
+          <a href="mailto:22shruti05@gmail.com" class="cl"><i class="ti ti-mail" aria-hidden="true"></i>Email</a>
+          <a href="https://linkedin.com" target="_blank" class="cl"><i class="ti ti-brand-linkedin" aria-hidden="true"></i>LinkedIn</a>
+          <a href="https://medium.com" target="_blank" class="cl"><i class="ti ti-brand-medium" aria-hidden="true"></i>Medium</a>
+          <a href="tel:+917505250477" class="cl"><i class="ti ti-phone" aria-hidden="true"></i>Call</a>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- EDUCATION -->
-<section class="edu-section" id="education">
-  <div class="edu-inner">
-    <div class="label reveal">Background</div>
-    <h2 class="section-title reveal">Education</h2>
-    <div class="edu-card reveal">
-      <div class="edu-icon">🎓</div>
-      <div class="edu-body">
-        <h3>B.Tech — Electronics & Communication Engineering</h3>
-        <p>Jaypee Institute of Information Technology, Noida, India</p>
-        <div class="edu-period">July 2019 – May 2023</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="label">Let's Connect</div>
-  <h2 class="contact-title">Open to New Roles</h2>
-  <p class="contact-sub">Looking for Product Manager opportunities where technology creates real-world impact.</p>
-  <div class="contact-grid">
-    <a href="mailto:22shruti05@gmail.com" class="contact-link">✉️ 22shruti05@gmail.com</a>
-    <a href="tel:+917505250477" class="contact-link">📞 +91 75052 50477</a>
-    <a href="https://linkedin.com/in/shruti-sharma-b203401b9" target="_blank" class="contact-link">🔗 LinkedIn</a>
-    <a href="https://medium.com/@22shruti05" target="_blank" class="contact-link">✍️ Medium</a>
-  </div>
-</section>
-
-<footer>© 2026 Shruti Sharma · Built with purpose</footer>
+<footer>Shruti Sharma · Product Manager · Bengaluru, India · 2025</footer>
 
 <script>
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+// Hero lines stagger in
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.querySelectorAll('.hline').forEach(el=>el.classList.add('visible'));
+  },600);
+});
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
   });
+},{threshold:0.12});
+document.querySelectorAll('.reveal,.reveal-left').forEach((el,i)=>{
+  el.style.transitionDelay=(i%4)*0.07+'s';
+  observer.observe(el);
+});
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 100);
-      }
-    });
-  }, { threshold: 0.1 });
+// Draggable skill chips
+const skills=[
+  {label:'Product roadmapping',icon:'ti-map',lvl:'e'},
+  {label:'User research',icon:'ti-users',lvl:'e'},
+  {label:'A/B testing',icon:'ti-test-pipe',lvl:'e'},
+  {label:'Stakeholder management',icon:'ti-network',lvl:'e'},
+  {label:'PRD / BRD writing',icon:'ti-file-text',lvl:'e'},
+  {label:'RICE prioritization',icon:'ti-sort-descending',lvl:'e'},
+  {label:'Funnel analysis',icon:'ti-trending-down',lvl:'e'},
+  {label:'Agile / Scrum',icon:'ti-refresh',lvl:'s'},
+  {label:'Sprint planning',icon:'ti-calendar',lvl:'s'},
+  {label:'Amplitude',icon:'ti-chart-line',lvl:'s'},
+  {label:'Figma wireframing',icon:'ti-vector',lvl:'s'},
+  {label:'Azure DevOps',icon:'ti-git-branch',lvl:'s'},
+  {label:'Go-to-market strategy',icon:'ti-speakerphone',lvl:'s'},
+  {label:'OKR setting',icon:'ti-target',lvl:'s'},
+  {label:'Cross-functional leadership',icon:'ti-arrows-cross',lvl:'s'},
+  {label:'Cohort analysis',icon:'ti-chart-dots',lvl:'s'},
+  {label:'Competitive analysis',icon:'ti-eye',lvl:'s'},
+  {label:'Customer journey mapping',icon:'ti-map-2',lvl:'s'},
+  {label:'Mobile app launches',icon:'ti-device-mobile',lvl:'g'},
+  {label:'Productboard',icon:'ti-layout-dashboard',lvl:'g'},
+  {label:'Tableau',icon:'ti-chart-bar',lvl:'g'},
+  {label:'SQL basics',icon:'ti-database',lvl:'g'},
+];
+const lvlText={e:'Expert',s:'Strong',g:'Good'};
+const board=document.getElementById('board');
+let dragEl=null;
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+skills.forEach((s,i)=>{
+  const chip=document.createElement('div');
+  chip.className='chip pop';
+  chip.style.animationDelay=(i*0.04)+'s';
+  chip.setAttribute('draggable',true);
+  chip.innerHTML=`<i class="ti ${s.icon}" aria-hidden="true"></i>${s.label}<span class="clvl ${s.lvl}">${lvlText[s.lvl]}</span>`;
+  chip.addEventListener('dragstart',e=>{
+    dragEl=chip;
+    setTimeout(()=>chip.classList.add('dragging'),0);
+    e.dataTransfer.effectAllowed='move';
+  });
+  chip.addEventListener('dragend',()=>{chip.classList.remove('dragging');dragEl=null;});
+  chip.addEventListener('dragover',e=>{
+    e.preventDefault();
+    if(chip!==dragEl){
+      const kids=[...board.children];
+      if(kids.indexOf(dragEl)<kids.indexOf(chip)) board.insertBefore(dragEl,chip.nextSibling);
+      else board.insertBefore(dragEl,chip);
+    }
+  });
+  board.appendChild(chip);
+});
+board.addEventListener('dragover',e=>e.preventDefault());
 </script>
 </body>
 </html>
